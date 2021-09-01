@@ -12,7 +12,17 @@
     </head>
 
     <body>
-        <h1 class="text-center m-3">Sami's Book Archive</h1>
+        <header class="container mt-3">
+            <h1 class="text-primary fw-bold text-center">Sami's Book Archive</h1>
+        </header>
+        <section class="container">
+            <div class="input-group mt-5 mb-3">
+                <input id="search-field" type="text" class="form-control" placeholder="Enter Book Name to Search"
+                    aria-label="search-field" aria-describedby="button-addon2">
+                <button class="ms-2 btn btn-primary rounded-3" type="button" id="search-button">Search</button>
+            </div>
+
+        </section>
 
         <script src="js/book.js"></script>
     </body>
