@@ -19,12 +19,23 @@ const displayErrorMessage = ( message ) => {
         `;
 }
 
-//Function for how many results are found in any search. Result Counter.
+//Function for how many results are found in a search. Number of Books.
 const displaySearchCounter = ( counter ) => {
     const searchCounter = document.getElementById( 'search-counter' );
-    searchCounter.innerHTML = `
+    //Validation for more than 100 results.
+    if ( counter > 100 ) {
+        searchCounter.innerHTML = `
+        Books Found: ${ counter }. But only 100 books shown here.
+    `;
+    }
+    //Validation for less then 100 results. Only show the result counter.
+    else {
+        searchCounter.innerHTML = `
         Books Found: ${ counter }
     `;
+    }
+
+
 }
 
 //Function for clear the search counter section when data loads.
@@ -61,7 +72,7 @@ const displayBookData = ( books ) => {
         clearResultContainer();
         displaySearchCounter( books?.numFound );
 
-        //the data is in the form of object -> object -> array. So, need to loop through the array to find all search result.
+        //the fetched data is in object -> object -> array form. Need to loop through the array to find all search result.
         books?.docs?.forEach( book => {
             const div = document.createElement( "div" );
             div.classList.add( 'col' );
