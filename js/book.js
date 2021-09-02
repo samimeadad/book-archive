@@ -34,8 +34,6 @@ const displaySearchCounter = ( counter ) => {
         Books Found: ${ counter }
     `;
     }
-
-
 }
 
 //Function for clear the search counter section when data loads.
