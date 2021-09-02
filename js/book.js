@@ -25,7 +25,7 @@ const displaySearchCounter = ( counter ) => {
     //Validation for more than 100 results.
     if ( counter > 100 ) {
         searchCounter.innerHTML = `
-        Books Found: ${ counter }. But only 100 books shown here.
+        Total Books Found: ${ counter }, but only 100 books shown here.
     `;
     }
     //Validation for less then 100 results. Only show the result counter.
