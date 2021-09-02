@@ -12,10 +12,14 @@
     </head>
 
     <body class="bg-dark">
+        <!-- Header Text -->
         <header class=" container mt-3">
             <h1 class="text-primary fw-bold text-center">Sami's Book Archive</h1>
         </header>
+
+        <!-- Main Section, Search Bar & Result -->
         <section class="container">
+            <!-- Search Bar & Search Button -->
             <section>
                 <div class="input-group mt-5 mb-3">
                     <input id="search-field" type="text" class="form-control" placeholder="Enter Book Name to Search"
@@ -23,16 +27,21 @@
                     <button id="search-button" class="ms-2 btn btn-primary rounded-3" type="button">Search</button>
                 </div>
             </section>
+
+            <!-- Loading Spinner -->
             <section id="spinner" class="text-center">
                 <button class="btn btn-primary" type="button" disabled>
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     Loading...Please Wait...
                 </button>
             </section>
+
+            <!-- Search Error Handling Container -->
             <section id="error-container">
 
             </section>
 
+            <!-- Search Result Container -->
             <section class="mt-5">
                 <h5 id="search-counter" class="fw-bold text-primary text-center"></h5>
                 <div id="result-container" class="row row-cols-1 row-cols-md-3 g-5 mt-2 text-center">
@@ -40,6 +49,8 @@
                 </div>
             </section>
         </section>
+
+        <!-- Javascript File Import -->
         <script src="js/book.js"></script>
     </body>
 
