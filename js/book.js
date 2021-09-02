@@ -51,8 +51,8 @@ const displayBookData = ( books ) => {
             const div = document.createElement( "div" );
             div.classList.add( 'col' );
             div.innerHTML = `
-                <div class="card h-100 rounded-3">
-                    <img src="https://covers.openlibrary.org/b/id/${ book.cover_i ? book.cover_i : 'Cover Not Available' }-M.jpg" class="card-img-top img-fluid p-3 rounded-3 w-75 mx-auto">
+                <div class="card h-100 rounded-3 p-3">
+                    <img src="https://covers.openlibrary.org/b/id/${ book.cover_i ? book.cover_i : '' }-M.jpg" class="card-img-top img-fluid p-3 rounded-3 w-75 mx-auto" alt="Cover Image Not Available">
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-primary"><b>Name:</b> ${ book.title ? book.title : 'Not Avaialable' }</h5>
                         <p class="card-text"><b>Authors: </b> ${ book.author_name ? book.author_name : 'Not Avaiable' }</p >
