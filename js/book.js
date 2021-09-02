@@ -65,7 +65,7 @@ const displayBookData = ( books ) => {
             div.classList.add( 'col' );
             div.innerHTML = `
                 <div class="card h-100 rounded-3 p-3">
-                    <img src="https://covers.openlibrary.org/b/id/${ book.cover_i ? book.cover_i : '' }-M.jpg" class="card-img-top img-fluid p-3 rounded-3 w-75 mx-auto" alt="Cover Image Not Available">
+                    <img src="https://covers.openlibrary.org/b/id/${ book.cover_i ? book.cover_i : '' }-M.jpg" class="card-img-top img-fluid p-3 rounded-3 w-75 mx-auto border border-1 border-primary" alt="Cover Image Not Available">
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-primary"><b>Name:</b> ${ book.title ? book.title : 'Not Avaialable' }</h5>
                         <p class="card-text"><b>Authors: </b> ${ book.author_name ? book.author_name[ 0 ] : 'Not Avaiable' }</p >
@@ -73,11 +73,11 @@ const displayBookData = ( books ) => {
                         <p class="card-text"><b>First Published: </b> ${ book.first_publish_year ? book.first_publish_year : 'Not Available' }</p>
                     </div >
                     <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <small class="text-muted">Last updated 1 mins ago</small>
                     </div>
                 </div >
     `;
-            //Appned the dynamically created div containing the book informaiton with its parent div.
+            //Appned the dynamically created div containing the book informaiton to its parent div.
             resultContainer.appendChild( div );
         } );
     }
