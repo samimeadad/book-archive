@@ -8,11 +8,12 @@ const displaySpinner = ( displayStyle ) => {
     document.getElementById( 'spinner' ).style.display = displayStyle;
 }
 
-//By default the spinner is hidden on document onload.
+//By default the spinner is hidden on site load.
 displaySpinner( 'none' );
 
-//Function for display search error messages for empty search and unavaialable book search
+//Function for display error messages for any API error, empty search, and unavaialable book search
 const displayErrorMessage = ( message ) => {
+    displaySpinner( 'none' );
     document.getElementById( 'error-container' ).innerHTML = `
             <h3 class="text-danger fw-bold text-center">${ message }</h3>
         `;
@@ -41,7 +42,8 @@ const loadBookData = ( bookName ) => {
     const url = `https://openlibrary.org/search.json?q=${ bookName }`;
     fetch( url )
         .then( res => res.json() )
-        .then( data => displayBookData( data ) );
+        .then( data => displayBookData( data ) )
+        .catch( error => displayErrorMessage( error ) ); //catch the API error and display it.
 }
 
 //Function for display the search result on the website.
@@ -65,7 +67,7 @@ const displayBookData = ( books ) => {
             div.classList.add( 'col' );
             div.innerHTML = `
                 <div class="card h-100 rounded-3 p-4">
-                    <img src="https://covers.openlibrary.org/b/id/${ book.cover_i ? book.cover_i : '' }-M.jpg" class="card-img-top img-fluid p-1 rounded-3 w-75 mx-auto border border-1 border-info" alt="Cover Image Not Available">
+                    <img src="https://covers.openlibrary.org/b/id/${ book.cover_i ? book.cover_i : '' }-M.jpg" class="card-img-top img-fluid p-1 rounded-3 w-75 mx-auto border border-1 border-info">
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-primary"><b>Name:</b> ${ book.title ? book.title : 'Not Avaialable' }</h5>
                         <p class="card-text"><b>Authors: </b> ${ book.author_name ? book.author_name[ 0 ] : 'Not Avaiable' }</p >
@@ -100,9 +102,9 @@ document.getElementById( 'search-button' ).addEventListener( 'click', () => {
     }
     //Result for search button click
     else {
-        clearErrorMessage();
-        displaySpinner( 'block' );
-        searchField.value = '';
-        loadBookData( searchText );
+        clearErrorMessage(); //Clear the error message if there is any.
+        displaySpinner( 'block' ); //Show the loading spinner after button click.
+        searchField.value = ''; //Clear the search field.
+        loadBookData( searchText ); //Load the book data from the server through API.
     }
 } );
