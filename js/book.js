@@ -50,8 +50,8 @@ const displayBookData = ( books ) => {
     displaySpinner( 'none' );
 
     //Error handling if searched book is not available
-    if ( books.numFound === 0 ) {
-        displayErrorMessage( 'NO BOOK FOUND! PLEASE SEARCH AGAIN!!!' );
+    if ( books?.numFound === 0 ) {
+        displayErrorMessage( 'SORRY!!! NO BOOK FOUND! PLEASE SEARCH AGAIN!!!' );
         return;
     }
     //Publish the search result on the website.
@@ -69,7 +69,7 @@ const displayBookData = ( books ) => {
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-primary"><b>Name:</b> ${ book.title ? book.title : 'Not Avaialable' }</h5>
                         <p class="card-text"><b>Authors: </b> ${ book.author_name ? book.author_name : 'Not Avaiable' }</p >
-                        <p class="card-text"><b>Publisher: </b> ${ book.publisher ? book.publisher.slice( 0, 10 ) : 'Not Available' }</p>
+                        <p class="card-text"><b>Publisher: </b> ${ book.publisher ? book.publisher[ 0 ] : 'Not Available' }</p>
                         <p class="card-text"><b>First Published: </b> ${ book.first_publish_year ? book.first_publish_year : 'Not Available' }</p>
                     </div >
                     <div class="card-footer">
@@ -85,15 +85,17 @@ const displayBookData = ( books ) => {
 
 //Click handler for search button.
 document.getElementById( 'search-button' ).addEventListener( 'click', () => {
+    //Clear the search result counter and result container section as soon as the search button is clicked.
     clearSearchCounter();
     clearResultContainer();
 
+    //get the search field  and search text by JS DOM.
     const searchField = document.getElementById( 'search-field' );
     const searchText = searchField.value;
 
     //Error handling for empty search input
     if ( searchText.length === 0 ) {
-        displayErrorMessage( 'PLEASE ENTER A BOOK NAME!!!' );
+        displayErrorMessage( 'ERROR!!! PLEASE ENTER A BOOK NAME!!!' );
         return;
     }
     //Result for search button click
